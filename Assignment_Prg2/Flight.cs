@@ -13,25 +13,24 @@ namespace Assignment_Prg2
 {
     abstract class Flight
     {
-        public string MyProperty { get; set; }
+        public string FlightNumber { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public DateTime ExpectdTime { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = "On time";
 
-        public Flight(string myProperty, string origin, string destination, DateTime expectedTime, string status) 
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime) 
         {
-            MyProperty = myProperty;
+            FlightNumber = flightNumber;
             Origin = origin;
             Destination = destination;
             ExpectdTime = expectedTime;
-            Status = status;
         }
         //public abstract double CalculateFees() 
        
-        public string ToString() 
+        public override string  ToString() 
         {
-            return "Property" + MyProperty + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
+            return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
         }
     }
 }

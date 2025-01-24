@@ -21,16 +21,15 @@ namespace Assignment_Prg2
 
         public string ToString()
         {
-            return "Property" + MyProperty + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
+            return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
         }
 
-        public LWTTFlight(string myProperty, string origin, string destination, DateTime expectedTime, string status) : base(myProperty, origin, destination, expectedTime, status)
+        public LWTTFlight(string flightNumber, string origin, string destination, DateTime expectedTime) : base(flightNumber, origin, destination, expectedTime)
         {
-            MyProperty = myProperty;
+            FlightNumber = flightNumber;
             Origin = origin;
             Destination = destination;
             ExpectdTime = expectedTime;
-            Status = status;
         }
     }
 }

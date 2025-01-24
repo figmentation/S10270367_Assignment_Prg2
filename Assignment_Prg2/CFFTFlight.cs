@@ -21,12 +21,14 @@ namespace Assignment_Prg2
 
         public string ToString() 
         {
-
+            return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
         }
 
-        public CFFTFlight(string myProperty, string origin, string destination, DateTime expectedTime, string status) : base(myProperty, origin, destination, expectedTime, status)
+        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime) : base(flightNumber, origin, destination, expectedTime)
         {
-            return "Property" + MyProperty + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
+            FlightNumber = flightNumber;
+            Origin = origin;
+            Destination = destination;
         }
     }
 }
