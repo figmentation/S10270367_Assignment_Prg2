@@ -18,7 +18,7 @@ namespace Assignment_Prg2
         private bool supportsDDJB;
         private bool supportsLWTT;
         private Flight flight;
-
+        
         public string GateName { get; set; }
         public bool SupportsCFFT { get; set; }
         public bool SupportDDJB { get; set; }
@@ -32,9 +32,9 @@ namespace Assignment_Prg2
             SupportDDJB = supportsDDJB;
             SupportLWTT = supportsLWTT;
         }
-
+            
         //public double CalculateFees()
-        //{
+        //{ 
 
         //}
 
