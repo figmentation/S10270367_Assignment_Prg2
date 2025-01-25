@@ -31,3 +31,35 @@ void LoadAirlines()
         }
     }
 }
+
+
+// feature 2 : load flights 
+
+void LoadFlights()
+{
+    using (StreamReader reader = new StreamReader("airlines.csv"))
+    {
+        string? line;
+        reader.ReadLine();
+
+        while ((line = reader.ReadLine()) != null)
+        {
+            string[] flightData = line.Split(',');
+            if ((flightData.Length >= 5))
+            {
+                string flightNumber = flightData[0].Trim();
+                string origin = flightData[1].Trim();
+                string destination = flightData[2].Trim();
+                DateTime expectedTime = DateTime.Parse(flightData[3].Trim());
+                string status = flightData[4].Trim();
+                Flight flight = new Flight(flightNumber, origin, destination, expectedTime, status);
+                terminal.Flights.Add(flightNumber, flight);
+            }
+            else
+            {
+            
+            }
+        }
+    }
+
+}
