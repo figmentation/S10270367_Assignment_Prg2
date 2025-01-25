@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//==========================================================
+// Student Number : S10270367
+// Student Name : Chong Yu Keat Jack
+// Partner Name : Fang Yu Xuan 
+//========================================================== 
 
 namespace Assignment_Prg2
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Security.Cryptography;
-    using System.Security.Principal;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    namespace prgassm
-    {
         internal class Terminal
         {
             private string terminalName;
@@ -33,13 +28,10 @@ namespace Assignment_Prg2
             public Dictionary<string, BoardingGate> BoardingGates { get; set; } = new Dictionary<string, BoardingGate>();
             public Dictionary<string, double> GateFees { get; set; } = new Dictionary<string, double>();
 
-            public Terminal(string terminalName, Dictionary<string, Airline> airlines=null, Dictionary<string, Flight> flights=null, Dictionary<string, BoardingGate> boardingGates=null, Dictionary<string, double> gateFees=null)
+            public Terminal(string terminalName)
             {
                 TerminalName = terminalName;
-                Airlines = airlines=new Dictionary<string, Airline>();
-                Flights = flights=new Dictionary<string, Flight>();
-                BoardingGates = boardingGates=new Dictionary<string, BoardingGate>();
-                GateFees = gateFees=new Dictionary<string, double>();
+              
             }
 
             public bool AddAirline(Airline airlines)
@@ -77,6 +69,4 @@ namespace Assignment_Prg2
 
         }
     }
-}
-
         

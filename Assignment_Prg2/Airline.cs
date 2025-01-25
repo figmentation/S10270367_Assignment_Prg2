@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//==========================================================
+// Student Number : S10270367
+// Student Name : Chong Yu Keat Jack
+// Partner Name : Fang Yu Xuan 
+//========================================================== 
 
 namespace Assignment_Prg2
 {
