@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    abstract class Flight
+    class Flight
     {
         public string FlightNumber { get; set; }
         public string Origin { get; set; }
@@ -19,12 +19,13 @@ namespace Assignment_Prg2
         public DateTime ExpectdTime { get; set; }
         public string Status { get; set; } = "On time";
 
-        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime) 
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status) 
         {
             FlightNumber = flightNumber;
             Origin = origin;
             Destination = destination;
             ExpectdTime = expectedTime;
+            Status = status;
         }
         //public abstract double CalculateFees() 
        
