@@ -18,7 +18,7 @@ while (true)
     int UserOp = Convert.ToInt32(Console.ReadLine());
     if (UserOp == 1)
     {
-        ListAllFlights();
+        ListFlights();
     }
     else if (UserOp == 2)
     {
@@ -26,23 +26,23 @@ while (true)
     }
     else if (UserOp == 3)
     {
-        AssignBGtoFlight();
+        //AssignBGtoFlight();
     }
     else if (UserOp == 4)
     {
-        CreateFlight();
+        //CreateFlight();
     }
     else if (UserOp == 5)
     {
-        DisplayAirlineFlights();
+        //DisplayAirlineFlights();
     }
     else if (UserOp == 6)
     {
-        ModifyFlightDetails();
+        //ModifyFlightDetails();
     }
     else if (UserOp == 7)
     {
-        DisplayFLightSchedule();
+        //DaisplayFLightSchedule();
     }
     else if (UserOp == 0)
     {
@@ -152,6 +152,19 @@ void LoadFlights()
         }
     }
 
+}
+
+
+//feature 3 (list all flights and information)
+void ListFlights()
+{
+    Console.WriteLine($"============================================= \r\nList of Boarding Gates for Changi Airport Terminal 5\r\n=============================================");
+    Console.WriteLine("Flight Number     Airline Name     Origin     Destination     Expected Departure");
+    foreach ( var f in terminal.Flights )
+    {
+        string AirlineName = terminal.GetAirlineFromFlight(f.Value).Name;
+        Console.WriteLine($"{f.Value.FlightNumber,-13}{AirlineName,-10}{f.Value.Origin,-10}{f.Value.Destination,-10}{f.Value.ExpectdTime,-10}");
+    }
 }
 
 //feature 4 (List all boarding gates)//

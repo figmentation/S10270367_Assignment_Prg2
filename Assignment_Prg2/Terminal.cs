@@ -56,15 +56,8 @@ namespace Assignment_Prg2
 
             public Airline GetAirlineFromFlight(Flight flight)
             {
-                string[] code = flight.FlightNumber.Split(' ');
-                foreach (Airline airline in Airlines.Values)
-                {
-                    if (code[0] == airline.Code)
-                    { return airline; }
-                }
-                return null;
-
-
+                string airlineName = flight.FlightNumber.Split(" ")[0];
+                return Airlines[airlineName];
             }
 
         }
