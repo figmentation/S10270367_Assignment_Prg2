@@ -330,10 +330,12 @@ void CreateFlight()
         }
     }
 }
- 
-   
-    
 
+
+
+// feature 9 
+
+void DisplayAirlineFlights();
 
 
 
