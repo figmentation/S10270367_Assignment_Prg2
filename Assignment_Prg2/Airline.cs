@@ -13,14 +13,10 @@ namespace Assignment_Prg2
 {
     internal class Airline
     {
-        private string name;
-        private string code;
-        private Dictionary<string, Flight> flights;
-
         public string Name { get; set; }
         public string Code { get; set; }
 
-        public Dictionary<string, Flight> Flights { get; set; }
+        public Dictionary<string, Flight> Flights { get; set; } = new Dictionary<string, Flight>();
 
         public Airline(string name, string code)
         {

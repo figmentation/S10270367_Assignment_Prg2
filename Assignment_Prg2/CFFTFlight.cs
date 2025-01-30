@@ -24,7 +24,7 @@ namespace Assignment_Prg2
             return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectdTime + "Status" + Status;
         }
 
-        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime) : base(flightNumber, origin, destination, expectedTime)
+        public CFFTFlight(string flightNumber, string origin, string destination, DateTime expectedTime,string status) : base(flightNumber, origin, destination, expectedTime, status)
         {
             FlightNumber = flightNumber;
             Origin = origin;
@@ -32,3 +32,16 @@ namespace Assignment_Prg2
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

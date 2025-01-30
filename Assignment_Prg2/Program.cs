@@ -1,7 +1,9 @@
 ﻿using Assignment_Prg2;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 
 //==========================================================
@@ -275,5 +277,66 @@ void AssignBGtoFlight()
         Console.WriteLine($"Flight {flight.FlightNumber} has been assigned to Boarding Gate {boardingGateName}!");
     }
 }
+
+//feature 6 
+
+void CreateFlight()
+{
+    while (true)
+    {
+        string? status = ;
+        Console.WriteLine("Enter Flight Number:");
+        string? fn = Console.ReadLine();
+        Console.WriteLine("Enter Origin:");
+        string? org = Console.ReadLine();
+        Console.WriteLine("Enter Destination:");
+        string? dest = Console.ReadLine();
+        Console.WriteLine("Enter Expected Departure / Arrival Time(dd / mm / yyyy hh: mm):");
+        DateTime eta = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("Enter Special Request Code (CFFT/DDJB/LWTT/None):");
+        string? Reqcode = Console.ReadLine().ToUpper();
+
+        Flight newflight;
+        if (Reqcode == "DDJB")
+        {
+            newflight = new DDJBFlight(fn, org, dest, eta, status);
+        }
+        else if (Reqcode == "CFFT")
+        {
+            newflight = new CFFTFlight(fn, org, dest, eta, status);
+        }
+        else if (Reqcode == "LWTT")
+        {
+            newflight = new LWTTFlight(fn, org, dest, eta, status);
+        }
+        else
+        {
+            newflight = new NORMFlight(fn, org, dest, eta, status);
+        }
+
+        terminal.Flights.Add(fn, newflight);
+        using (StreamWriter sw = new StreamWriter("flights.csv", true))
+        {
+            sw.WriteLine($"{fn},{org},{dest},{eta:dd/MM/yyyy HH:mm},{status},{Reqcode}");
+        }
+
+        Console.WriteLine($"Flight {newflight.FlightNumber} has been added.");
+        Console.WriteLine("Would you like to add another flight? (Y/N)");
+        string? addAnother = Console.ReadLine().ToUpper();
+
+        if (addAnother != "Y")
+        {
+            break;
+        }
+    }
+}
+ 
+   
+    
+
+
+
+
+
 
 
