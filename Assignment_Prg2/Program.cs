@@ -46,7 +46,7 @@ while (true)
     }
     else if (UserOp == 7)
     {
-        DaisplayFLightSchedule();
+        DisplayFLightSchedule();
     }
     else if (UserOp == 0)
     {
@@ -317,7 +317,7 @@ void CreateFlight()
         terminal.Flights.Add(fn, newflight);
         using (StreamWriter sw = new StreamWriter("flights.csv", true))
         {
-            sw.WriteLine($"{fn},{org},{dest},{eta:dd/MM/yyyy HH:mm},{status},{Reqcode}");
+            sw.WriteLine($"{fn},{org},{dest},{eta},{status},{Reqcode}");
         }
 
         Console.WriteLine($"Flight {newflight.FlightNumber} has been added.");
@@ -335,7 +335,20 @@ void CreateFlight()
 
 // feature 9 
 
-void DisplayAirlineFlights();
+void DisplayFLightSchedule()
+{
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Flight Number    Airline Name      Origin     Destination    Expected Departure/Arrival Time   Status  Boarding Gate");
+
+     List<Flight> sortedFlights = new List<Flight>(terminal.Flights.Values);
+    sortedFlights.Sort();
+    foreach (var flight in sortedFlights)
+    {
+        Console.WriteLine(flight);
+    }
+}
 
 
 
