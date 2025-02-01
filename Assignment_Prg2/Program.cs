@@ -1,4 +1,5 @@
 ﻿using Assignment_Prg2;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Numerics;
@@ -622,6 +623,43 @@ void DisplayFLightSchedule()
         Console.WriteLine(flight.ExpectedTime);
     }
 }
+
+// feature 5 
+void AssignBGtoFlight()
+{
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Assign a Boarding Gate to a Flight");
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Enter flight number:");
+    string flightNumber = Console.ReadLine();
+
+    if (!terminal.Flights.ContainsKey(flightNumber))
+    {
+        Console.WriteLine("Flight number not found. Please try again.");
+    }
+    else
+    {
+        Flight flight = terminal.Flights[flightNumber];
+        string boardingGateName;
+
+        while (true)
+        {
+            Console.WriteLine("Enter boarding Gate Name");
+            boardingGateName = Console.ReadLine();
+
+            if (!terminal.BoardingGates.ContainsKey(boardingGateName))
+            {
+                Console.WriteLine("Invalid boarding gate. Please try again.");
+                continue;
+            }
+
+            BoardingGate gate = terminal.BoardingGates[boardingGateName];
+
+            if (gate.Flight != null)
+            {
+                Console.WriteLine($"Boarding Gate {gate.GateName} is already assigned to Flight {gate.Flight.FlightNumber}. Please choose a different gate.");
+                continue;
+            }
 
 //Advanced Part a (Process all unassigned flights to boarding gates in bulk) Jack//
 
