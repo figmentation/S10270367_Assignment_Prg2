@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 // Student Number : S10270367
 // Student Name : Chong Yu Keat Jack
 // Partner Name : Fang Yu Xuan 
+// Partner Number : S1026700
 //========================================================== 
 
 namespace Assignment_Prg2
 {
         internal class Terminal
         {
-            private string terminalName;
-            private Dictionary<string, Airline> airlines;
-            private Dictionary<string, Flight> flights;
-            private Dictionary<string, BoardingGate> boardingGates;
-            private Dictionary<string, double> gateFees;
-
-
             public string TerminalName { get; set; }
 
 
@@ -63,10 +57,8 @@ namespace Assignment_Prg2
                     { return airline; }
                 }
                 return null;
-
-
             }
 
         }
-    }
+    } 
         

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 // Student Number : S10270367
 // Student Name : Chong Yu Keat Jack
 // Partner Name : Fang Yu Xuan 
+// Partner Number : S1026700
 //========================================================== 
 
 namespace Assignment_Prg2
