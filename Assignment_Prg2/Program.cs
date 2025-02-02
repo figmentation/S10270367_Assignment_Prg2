@@ -160,22 +160,22 @@ void LoadFlights()
                 string status = flightData[4].Trim();
                 if (flightData[4] == "DDJB")
                 {
-                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime, status);
+                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "LWTT")
                 {
-                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime, status);
+                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "CFFT")
                 {
-                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime, status);
+                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else
                 {
-                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime, status);
+                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
             }
@@ -329,19 +329,19 @@ void CreateFlight()
         Flight newflight;
         if (Reqcode == "DDJB")
         {
-            newflight = new DDJBFlight(fn, org, dest, eta, Reqcode);
+            newflight = new DDJBFlight(fn, org, dest, eta);
         }
         else if (Reqcode == "CFFT")
         {
-            newflight = new CFFTFlight(fn, org, dest, eta, Reqcode);
+            newflight = new CFFTFlight(fn, org, dest, eta);
         }
         else if (Reqcode == "LWTT")
         {
-            newflight = new LWTTFlight(fn, org, dest, eta, Reqcode);
+            newflight = new LWTTFlight(fn, org, dest, eta);
         }
         else
         {
-            newflight = new NORMFlight(fn, org, dest, eta, Reqcode);
+            newflight = new NORMFlight(fn, org, dest, eta);
         }
 
         terminal.Flights.Add(fn, newflight);
@@ -549,22 +549,22 @@ void ModifyFlightDetails()
             terminal.Flights.Remove(userAC2);
             if (userSrq == "CFFT")
             {
-                flight = new CFFTFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime, flight.Status);
+                flight = new CFFTFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime);
                 terminal.Flights.Add(userAC2, flight);
             }
             if (userSrq == "LWTT")
             {
-                flight = new LWTTFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime, flight.Status);
+                flight = new LWTTFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime);
                 terminal.Flights.Add(userAC2, flight);
             }
             if (userSrq == "DDJB")
             {
-                flight = new DDJBFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime, flight.Status);
+                flight = new DDJBFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime);
                 terminal.Flights.Add(userAC2, flight);
             }
             else
             {
-                flight = new NORMFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime, flight.Status);
+                flight = new NORMFlight(userAC2, flight.Origin, flight.Destination, flight.ExpectedTime);
                 terminal.Flights.Add(userAC2, flight);
             }
         }
@@ -617,7 +617,7 @@ void DisplayFlightSchedule()
     Console.WriteLine("Flight Number    Airline Name      Origin     Destination    Expected Departure/Arrival Time   Status  Boarding Gate");
 
     List<Flight> sortedFlights = new List<Flight>(terminal.Flights.Values);
-    sortedFlights.Sort();  
+    sortedFlights.Sort();
 
     foreach (var flight in sortedFlights)
     {
@@ -629,11 +629,11 @@ void DisplayFlightSchedule()
         {
             boardingGate = terminal.BoardingGates[flight.FlightNumber].GateName;
         }
-        else 
+        else
         {
-            boardingGate = "Unassigned";  
+            boardingGate = "Unassigned";
         }
-        Console.WriteLine($"{flight.FlightNumber,-18}{airlineName,-20}{flight.Origin,-20}{flight.Destination,-20}{flight.ExpectedTime,-30}{flight.Status ,-10}{boardingGate}");
+        Console.WriteLine($"{flight.FlightNumber,-18}{airlineName,-20}{flight.Origin,-20}{flight.Destination,-20}{flight.ExpectedTime,-30}{flight.Status,-10}{boardingGate}");
     }
 }
 
