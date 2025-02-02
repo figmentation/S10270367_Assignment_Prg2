@@ -70,7 +70,7 @@ while (true)
         }
         else if (UserOp == 7)
         {
-            DisplayFLightSchedule();
+            DisplayFlightSchedule();
             Space();
         }
         else if (UserOp == 0)
@@ -160,22 +160,22 @@ void LoadFlights()
                 string status = flightData[4].Trim();
                 if (flightData[4] == "DDJB")
                 {
-                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime,status);
+                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "LWTT")
                 {
-                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime,status);
+                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "CFFT")
                 {
-                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime,status);
+                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else
                 {
-                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime,status);
+                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime);
                     terminal.Flights.Add(flightNumber, flight);
                 }
             }
@@ -329,7 +329,7 @@ void CreateFlight()
         Flight newflight;
         if (Reqcode == "DDJB")
         {
-            newflight = new DDJBFlight(fn, org, dest, eta,s);
+            newflight = new DDJBFlight(fn, org, dest, eta);
         }
         else if (Reqcode == "CFFT")
         {
@@ -609,7 +609,7 @@ void ModifyFlightDetails()
 
 
 //Feature 9 (Display scheduled flights in chronological order, with boarding gate assignmetns where applicable) Yu Xuan//
-void DisplayFLightSchedule() 
+void DisplayFlightSchedule()
 {
     Console.WriteLine("=============================================");
     Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
@@ -617,13 +617,26 @@ void DisplayFLightSchedule()
     Console.WriteLine("Flight Number    Airline Name      Origin     Destination    Expected Departure/Arrival Time   Status  Boarding Gate");
 
     List<Flight> sortedFlights = new List<Flight>(terminal.Flights.Values);
-    sortedFlights.Sort();
+    sortedFlights.Sort();  
+
     foreach (var flight in sortedFlights)
     {
-        Console.WriteLine(flight.ExpectedTime);
+        var airline = terminal.GetAirlineFromFlight(flight);
+        string airlineName = airline != null ? airline.Name : "Unknown";
+        string boardingGate = " ";
+        string Status = " ";
+        if (terminal.BoardingGates.ContainsKey(flight.FlightNumber))
+        {
+            boardingGate = terminal.BoardingGates[flight.FlightNumber].GateName;
+        }
+        else 
+        {
+            boardingGate = "Unassigned";  
+        }
+        Console.WriteLine($"{flight.FlightNumber,-18}{airlineName,-20}{flight.Origin,-20}{flight.Destination,-20}{flight.ExpectedTime,-30}{flight.Status ,-10}{boardingGate}");
     }
 }
-            
+
 
 
 //Advanced Part a (Process all unassigned flights to boarding gates in bulk) Jack//
