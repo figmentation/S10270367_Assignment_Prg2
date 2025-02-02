@@ -623,7 +623,7 @@ void DisplayFLightSchedule()
         Console.WriteLine(flight.ExpectedTime);
     }
 }
-            }
+            
 
 
 //Advanced Part a (Process all unassigned flights to boarding gates in bulk) Jack//
