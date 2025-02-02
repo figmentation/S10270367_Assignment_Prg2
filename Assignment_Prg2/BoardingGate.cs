@@ -12,14 +12,8 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    internal class BoardingGate
-    {
-        private string gateName;
-        private bool supportsCFFT;
-        private bool supportsDDJB;
-        private bool supportsLWTT;
-        private Flight flight;
-        
+    class BoardingGate
+    {  
         public string GateName { get; set; }
         public bool SupportsCFFT { get; set; }
         public bool SupportDDJB { get; set; }
@@ -33,13 +27,16 @@ namespace Assignment_Prg2
             SupportDDJB = supportsDDJB;
             SupportLWTT = supportsLWTT;
         }
-            
+
         //public double CalculateFees()
         //{ 
 
         //}
 
-
+        public override string ToString() 
+        {
+            return "Gate Name:" + GateName + "SupportsCFFT" + SupportsCFFT+ "SupportDDJB" + SupportDDJB + "SupportLWTT" + SupportLWTT;
+        }
     }
 }
 

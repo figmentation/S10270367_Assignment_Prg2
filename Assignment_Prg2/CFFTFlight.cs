@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    internal class CFFTFlight : Flight
+    class CFFTFlight : Flight
     {
         public double RequestFee { get; set; }
 

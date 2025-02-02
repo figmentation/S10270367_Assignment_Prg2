@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-        internal class Terminal
+        class Terminal
         {
+        private Terminal terminal;
             public string TerminalName { get; set; }
 
 
@@ -25,7 +26,10 @@ namespace Assignment_Prg2
             public Terminal(string terminalName)
             {
                 TerminalName = terminalName;
-              
+                Airlines = new Dictionary<string, Airline>();
+                Flights = new Dictionary<string, Flight>();
+                BoardingGates = new Dictionary<string, BoardingGate>();
+                GateFees = new Dictionary<string, double>();
             }
 
             public bool AddAirline(Airline airlines)

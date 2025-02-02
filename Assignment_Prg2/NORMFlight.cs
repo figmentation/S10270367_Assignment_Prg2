@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    internal class NORMFlight : Flight
+    class NORMFlight : Flight
     {
         //public abstract double CalculateFees() 
        

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    internal class Airline
+    class Airline
     {
         public string Name { get; set; }
         public string Code { get; set; }
@@ -45,7 +45,10 @@ namespace Assignment_Prg2
             return false;
         }
 
-        
+        public override string ToString()
+        {
+            return "Name:" + Name + "Code:" + Code; 
+        }
 
     }
 }

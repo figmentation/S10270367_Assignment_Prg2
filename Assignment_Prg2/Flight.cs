@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    class Flight 
+     class Flight : IComparable<Flight>
     {
         public string FlightNumber { get; set; }
         public string Origin { get; set; }
@@ -20,7 +20,7 @@ namespace Assignment_Prg2
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; } = "Scheduled";
 
-        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime) 
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime)
         {
             FlightNumber = flightNumber;
             Origin = origin;
@@ -36,9 +36,9 @@ namespace Assignment_Prg2
             return this.ExpectedTime.CompareTo(other.ExpectedTime);
         }
 
-        public override string  ToString() 
+        public override string ToString()
         {
-            return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectedTime + "Status" + Status;
+            return $"Flight Number: {FlightNumber}, Origin: {Origin}, Destination: {Destination}, Expected Time: {ExpectedTime}, Status: {Status}";
         }
     }
 }
