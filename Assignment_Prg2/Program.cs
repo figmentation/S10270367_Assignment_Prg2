@@ -160,22 +160,22 @@ void LoadFlights()
                 string status = flightData[4].Trim();
                 if (flightData[4] == "DDJB")
                 {
-                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime);
+                    DDJBFlight flight = new DDJBFlight(flightNumber, origin, destination, expectedTime,status);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "LWTT")
                 {
-                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime);
+                    LWTTFlight flight = new LWTTFlight(flightNumber, origin, destination, expectedTime,status);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else if (flightData[4] == "CFFT")
                 {
-                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime);
+                    CFFTFlight flight = new CFFTFlight(flightNumber, origin, destination, expectedTime,status);
                     terminal.Flights.Add(flightNumber, flight);
                 }
                 else
                 {
-                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime);
+                    NORMFlight flight = new NORMFlight(flightNumber, origin, destination, expectedTime,status);
                     terminal.Flights.Add(flightNumber, flight);
                 }
             }
@@ -329,7 +329,7 @@ void CreateFlight()
         Flight newflight;
         if (Reqcode == "DDJB")
         {
-            newflight = new DDJBFlight(fn, org, dest, eta);
+            newflight = new DDJBFlight(fn, org, dest, eta,s);
         }
         else if (Reqcode == "CFFT")
         {

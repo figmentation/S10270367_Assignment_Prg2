@@ -20,12 +20,13 @@ namespace Assignment_Prg2
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; } = "Scheduled";
 
-        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime) 
+        public Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status) 
         {
             FlightNumber = flightNumber;
             Origin = origin;
             Destination = destination;
             ExpectedTime = expectedTime;
+            Status = status;
         }
 
         //public abstract double CalculateFees() 
