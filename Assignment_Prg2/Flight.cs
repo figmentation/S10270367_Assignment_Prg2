@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Prg2
 {
-    class Flight : IComparable<Flight>
+    class Flight 
     {
         public string FlightNumber { get; set; }
         public string Origin { get; set; }
