@@ -30,6 +30,12 @@ namespace Assignment_Prg2
 
         //public abstract double CalculateFees() 
 
+        public int CompareTo(Flight? other)
+        {
+            if (other == null) return 1;
+            return this.ExpectedTime.CompareTo(other.ExpectedTime);
+        }
+
         public override string  ToString() 
         {
             return "Flight Number" + FlightNumber + "Origin" + Origin + "Destination" + Destination + "Expected Time" + ExpectedTime + "Status" + Status;

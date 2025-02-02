@@ -70,7 +70,7 @@ while (true)
         }
         else if (UserOp == 7)
         {
-            DisplayFLightSchedule();
+            DisplayFlightSchedule();
             Space();
         }
         else if (UserOp == 0)
@@ -609,10 +609,34 @@ void ModifyFlightDetails()
 
 
 //Feature 9 (Display scheduled flights in chronological order, with boarding gate assignmetns where applicable) Yu Xuan//
-void DisplayFLightSchedule() 
+void DisplayFlightSchedule()
 {
-    
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Flight Number    Airline Name      Origin     Destination    Expected Departure/Arrival Time   Status  Boarding Gate");
+
+    List<Flight> sortedFlights = new List<Flight>(terminal.Flights.Values);
+    sortedFlights.Sort();  
+
+    foreach (var flight in sortedFlights)
+    {
+        var airline = terminal.GetAirlineFromFlight(flight);
+        string airlineName = airline != null ? airline.Name : "Unknown";
+        string boardingGate = " ";
+        string Status = " ";
+        if (terminal.BoardingGates.ContainsKey(flight.FlightNumber))
+        {
+            boardingGate = terminal.BoardingGates[flight.FlightNumber].GateName;
+        }
+        else 
+        {
+            boardingGate = "Unassigned";  
+        }
+        Console.WriteLine($"{flight.FlightNumber,-18}{airlineName,-20}{flight.Origin,-20}{flight.Destination,-20}{flight.ExpectedTime,-30}{flight.Status ,-10}{boardingGate}");
+    }
 }
+
 
 
 //Advanced Part a (Process all unassigned flights to boarding gates in bulk) Jack//
